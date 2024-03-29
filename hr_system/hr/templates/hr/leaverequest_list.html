@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Request List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Leave Request List</h1>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'leaverequest_create' %}"><button>Add New Leave Request</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Reason</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leave_request in leave_requests %}
+                <tr>
+                    <td>{{ leave_request.employee }}</td>
+                    <td>{{ leave_request.start_date }}</td>
+                    <td>{{ leave_request.end_date }}</td>
+                    <td>{{ leave_request.reason }}</td>
+                    <td>{{ leave_request.status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
